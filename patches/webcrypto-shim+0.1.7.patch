@@ -1,0 +1,19 @@
+diff --git a/node_modules/webcrypto-shim/webcrypto-shim.js b/node_modules/webcrypto-shim/webcrypto-shim.js
+index eb23760..bad18bf 100644
+--- a/node_modules/webcrypto-shim/webcrypto-shim.js
++++ b/node_modules/webcrypto-shim/webcrypto-shim.js
+@@ -15,7 +15,7 @@
+     } else {
+         factory(global);
+     }
+-}(typeof self !== 'undefined' ? self : this, function (global) {
++}(typeof self !== 'undefined' ? self : undefined, function (global) {
+     'use strict';
+ 
+     if ( typeof Promise !== 'function' )
+@@ -620,3 +620,5 @@
+         global.CryptoKey = CryptoKey;
+     }
+ }));
++
++export default {} // section modified by isomorphic-webcrypto build

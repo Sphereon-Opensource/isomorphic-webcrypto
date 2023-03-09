@@ -32,7 +32,7 @@ module.exports = function(config) {
       FirefoxHeadless: {
         base: 'Firefox',
         flags: ['-headless']
-      },
+      /*},
       EdgeVM: {
         base: 'VirtualBoxEdge',
         keepAlive: true,
@@ -41,7 +41,7 @@ module.exports = function(config) {
       IE11VM: {
         base: 'VirtualBoxIE11',
         keepAlive: true,
-        uuid: process.env.IE11_VIRTUAL_BOX_UUID
+        uuid: process.env.IE11_VIRTUAL_BOX_UUID*/
       }
     }
   })

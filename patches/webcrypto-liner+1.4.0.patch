@@ -1,0 +1,47 @@
+diff --git a/node_modules/webcrypto-liner/build/webcrypto-liner.shim.js b/node_modules/webcrypto-liner/build/webcrypto-liner.shim.js
+index 2e11d9d..827df65 100644
+--- a/node_modules/webcrypto-liner/build/webcrypto-liner.shim.js
++++ b/node_modules/webcrypto-liner/build/webcrypto-liner.shim.js
+@@ -10819,7 +10819,7 @@ var liner = function (exports, asmCrypto, elliptic) {
+     _createClass(Debug, null, [{
+       key: "enabled",
+       get: function get() {
+-        return typeof self !== "undefined" && self.PV_WEBCRYPTO_LINER_LOG;
++        return typeof self !== "undefined" && window.PV_WEBCRYPTO_LINER_LOG;
+       }
+     }, {
+       key: "log",
+@@ -10903,7 +10903,7 @@ var liner = function (exports, asmCrypto, elliptic) {
+       return res;
+     }
+ 
+-    var userAgent = self.navigator.userAgent;
++    var userAgent = window.navigator.userAgent;
+     var reg;
+ 
+     if (reg = /edge\/([\d\.]+)/i.exec(userAgent)) {
+@@ -17987,14 +17987,14 @@ var liner = function (exports, asmCrypto, elliptic) {
+     };
+   }
+ 
+-  var window$1 = self;
++  var window$1 = window;
+ 
+   if (exports.nativeCrypto) {
+     Object.freeze(exports.nativeCrypto.getRandomValues);
+   }
+ 
+   try {
+-    delete self.crypto;
++    delete window.crypto;
+     window$1.crypto = new Crypto();
+     Object.freeze(window$1.crypto);
+   } catch (e) {
+@@ -18010,4 +18010,6 @@ var liner = function (exports, asmCrypto, elliptic) {
+     value: true
+   });
+   return exports;
+-}({}, self.asmCrypto, self.elliptic);
++}({}, window.asmCrypto, window.elliptic);
++
++module.exports = liner; // section modified by isomorphic-webcrypto build

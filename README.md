@@ -1,5 +1,8 @@
-# isomorphic-webcrypto [![NPM](https://img.shields.io/npm/v/isomorphic-webcrypto.svg)](https://npmjs.com/package/isomorphic-webcrypto) [![bundlephobia](https://img.shields.io/bundlephobia/minzip/isomorphic-webcrypto.svg)](https://bundlephobia.com/result?p=isomorphic-webcrypto)
-webcrypto library for Node, React Native and IE11+
+# @sphereon/isomorphic-webcrypto [![NPM](https://img.shields.io/npm/v/isomorphic-webcrypto.svg)](https://npmjs.com/package/isomorphic-webcrypto) [![bundlephobia](https://img.shields.io/bundlephobia/minzip/isomorphic-webcrypto.svg)](https://bundlephobia.com/result?p=isomorphic-webcrypto)
+webcrypto library for Node, React Native and IE11+ forked from https://github.com/kevlened/isomorphic-webcrypto
+
+## Why Forked?
+The original library is not maintained anymore and has some issues with the latest versions of react-native. See the [changelog](./CHANGELOG.md) for more details.
 
 ## What?
 
@@ -13,7 +16,15 @@ There's currently no native crypto support in React Native, so [the Microsoft Re
 
 ## Install
 
-`npm install isomorphic-webcrypto`
+`npm install @sphereon/isomorphic-webcrypto`
+
+if you have any packages that depend on the original `isomorphic-webcrypto` you will need the following resolutions entry if you are using yarn: 
+
+```json
+ "resolutions": {
+    "isomorphic-webcrypto": "npm:@sphereon/isomorphic-webcrypto@^2.4.0"
+  }
+```
 
 ## Usage
 
