@@ -1,2 +1,5 @@
 const { Crypto } = require('@peculiar/webcrypto')
-module.exports = new Crypto()
+const {selectHashFunction} = require("./hash");
+const peculiarWebcrypto = new Crypto()
+peculiarWebcrypto.createHash = selectHashFunction(peculiarWebcrypto);
+module.exports = peculiarWebcrypto

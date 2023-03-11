@@ -1,7 +1,7 @@
 {
   "name": "@sphereon/isomorphic-webcrypto",
-  "version": "2.4.0-unstable.1",
-  "description": "webcrypto library for Node, React Native and IE11+",
+  "version": "2.4.0-unstable.2",
+  "description": "webcrypto library for Node, React Native and Browser",
   "main": "./src/main.js",
   "module": "./src/index.mjs",
   "browser": {
@@ -40,10 +40,15 @@
   "homepage": "https://github.com/kevlened/isomorphic-webcrypto#readme",
   "dependencies": {
     "@peculiar/webcrypto": "^1.4.1",
+    "cipher-base": "^1.0.4",
+    "inherits": "^2.0.4",
+    "md5.js": "^1.3.5",
+    "ripemd160": "^2.0.2",
+    "sha.js": "^2.4.11",
     "asmcrypto.js": "^2.3.2",
     "b64-lite": "^1.4.0",
     "b64u-lite": "^1.1.0",
-    "msrcrypto": "^1.5.8",
+    "create-hash": "^1.2.0",
     "str2buf": "^1.3.0",
     "webcrypto-shim": "^0.1.7"
   },
@@ -71,6 +76,7 @@
     "patch-package": "^6.5.1"
   },
   "peerDependencies": {
+    "msrcrypto": "^1.5.8",
     "react-native-securerandom": "^1.0.1",
     "expo-crypto": "*",
     "expo": "*"

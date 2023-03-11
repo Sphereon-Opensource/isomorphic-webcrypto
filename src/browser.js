@@ -2,7 +2,7 @@ require('webcrypto-shim');
 var b64u = require('b64u-lite/bundle/b64u-lite');
 var str2buf = require('str2buf');
 
-var isEdge = navigator.userAgent.indexOf('Edge') > -1;
+// var isEdge = navigator.userAgent.indexOf('Edge') > -1;
 var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Polyfill
@@ -31,7 +31,7 @@ function toArray(item) {
   return Array.prototype.slice.call(item);
 }
 
-if (isEdge || isIE11) {
+if (/*isEdge || */isIE11) {
   var originalGenerateKey = crypto.subtle.generateKey;
   crypto.subtle.generateKey = function() {
     const args = toArray(arguments);
@@ -77,5 +77,7 @@ if (isEdge || isIE11) {
     });
   };
 }
+
+window.crypto.createHash = require('./hash').selectHashFunction(window.crypto);
 
 module.exports = window.crypto;

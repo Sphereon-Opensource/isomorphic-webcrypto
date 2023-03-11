@@ -14,6 +14,10 @@ jest.mock('str2buf', () => require('str2buf/dist/str2buf.js'));
 
 const crypto = require('../src/react-native');
 
+const hash = crypto.createHash('SHA-256').update('hello').digest();
+console.log(hash.toString('hex'));
+
+
 require('webcrypto-test-suite')({
   crypto,
   shouldSkip(spec) {

@@ -1,2 +1,6 @@
 import { Crypto } from '@peculiar/webcrypto'
-export default new Crypto()
+import {selectHashFunction} from "./hash.js";
+
+const peculiarWebcrypto = new Crypto()
+peculiarWebcrypto.createHash = selectHashFunction(peculiarWebcrypto);
+export default peculiarWebcrypto

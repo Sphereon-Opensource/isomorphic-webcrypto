@@ -1,18 +1,15 @@
 let generateSecureRandom;
 //
 try {
-  const NativeModules = require('react-native').NativeModules;
-
-  if (NativeModules) {
+  const rn = require('react-native');
+  if (rn) {
     try {
       generateSecureRandom = require('expo-crypto').getRandomBytesAsync;
     } catch (e) {
-      if (NativeModules.RNSecureRandom) {
-        try {
-          generateSecureRandom = require(
-              'react-native-securerandom').generateSecureRandom;
-        } catch (e2) {
-        }
+      try {
+        generateSecureRandom = require(
+            'react-native-securerandom').generateSecureRandom;
+      } catch (e2) {
       }
     }
   }
@@ -22,7 +19,7 @@ try {
 
 if (!generateSecureRandom) {
   console.log(`
-    isomorphic-webcrypto cannot ensure the security of some operations!
+    @sphereon/isomorphic-webcrypto cannot ensure the security of some operations!
     Install and configure react-native-securerandom or expo-crypto
     If managed by Expo, run 'expo install expo-crypto'
   `);
@@ -42,8 +39,9 @@ const b64 = require('b64-lite');
 if (global.window.navigator === undefined) {
   global.window.navigator = {};
 }
-
-global.window.navigator.userAgent = '';
+if (global.window.navigator.userAgent === undefined) {
+  global.window.navigator.userAgent = '';
+}
 global.atob = typeof atob === 'undefined' ? b64.atob : atob;
 global.btoa = typeof btoa === 'undefined' ? b64.btoa : btoa;
 global.msrCryptoPermanentForceSync = true;
@@ -72,6 +70,8 @@ const secured = new Promise((resolve, reject) => {
   const liner = require('./webcrypto-liner');
 
   const originalImportKey = crypto.subtle.importKey;
+
+
   crypto.subtle.importKey = function importKey() {
     const importType = arguments[0];
     const key = arguments[1];
@@ -264,5 +264,7 @@ crypto.subtle.digest = function digest() {
   arguments[1] = ensureUint8Array(arguments[1]);
   return originalDigest.apply(this, arguments);
 }
+
+crypto.createHash = require('./hash').selectHashFunction(crypto);
 
 module.exports = crypto
