@@ -265,6 +265,6 @@ crypto.subtle.digest = function digest() {
   return originalDigest.apply(this, arguments);
 }
 
-crypto.createHash = require('./hash').selectHashFunction(crypto);
+crypto.createHash = require('./hash')(crypto);
 
 module.exports = crypto

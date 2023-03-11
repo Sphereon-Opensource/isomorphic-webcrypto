@@ -78,6 +78,6 @@ if (/*isEdge || */isIE11) {
   };
 }
 
-window.crypto.createHash = require('./hash').selectHashFunction(window.crypto);
+window.crypto.createHash = require('./hash')(window.crypto);
 
 module.exports = window.crypto;

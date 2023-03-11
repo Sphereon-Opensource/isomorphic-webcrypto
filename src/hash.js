@@ -4,9 +4,11 @@ function createHashFallback(algorithm) {
   return hashFallbackImpl(normalizedAlgorithm);
 }
 
-export function selectHashFunction(crypto) {
+function selectHashFunction(crypto) {
   if (!crypto || !crypto.createHash) {
     return createHashFallback;
   }
   return crypto.createHash;
 }
+
+module.exports = selectHashFunction;
