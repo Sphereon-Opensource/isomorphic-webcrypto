@@ -3,8 +3,11 @@
 All notable changes to this project will be documented in this file. 
 Please note that this is a fork of isomorphic-webcrypto, as such this changelog only lists changes since the fork.
 
-# 2.4.0 (2023-03-09)
+# 2.4.0 (2023-03-xx)
 
+- added:
+    - createHash support
+    - randomFill(Sync) support
 - updates:
   - update dependencies
   - support expo-crypto for secure random generator

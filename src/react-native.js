@@ -266,5 +266,8 @@ crypto.subtle.digest = function digest() {
 }
 
 crypto.createHash = require('./hash')(crypto);
+const rf = require('randomfill')
+crypto.randomFill = rf.randomFill
+crypto.randomFillSync = rf.randomFillSync
 
 module.exports = crypto

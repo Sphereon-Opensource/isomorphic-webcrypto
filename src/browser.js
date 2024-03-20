@@ -79,5 +79,8 @@ if (/*isEdge || */isIE11) {
 }
 
 window.crypto.createHash = require('./hash')(window.crypto);
+const rf = require('randomfill')
+window.crypto.randomFill = rf.randomFill
+window.crypto.randomFillSync = rf.randomFillSync
 
 module.exports = window.crypto;
